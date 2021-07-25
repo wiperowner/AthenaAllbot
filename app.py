@@ -16,8 +16,8 @@ db = BotDatabase('database.db')
 
 
 def start_command(update, context):
-    message = 'Hey! I can help notify everyone 📢 in the group when someone needs them. \
-Everyone who wishes to receive mentions needs to /in to opt-in. All opted-in users can then be mentioned using /all'
+    message = 'Merhaba! Ben Athena etiket botu senin için gruptaki herkesi etiketliyebilirim. \
+Everyone who wishes to receive Etiket işlemini başlatmak için beni bir gruba ekle ve /utag yazarak başlat. '
     context.bot.send_message(chat_id=update.effective_chat.id, text=message)
 
 
@@ -27,7 +27,7 @@ def in_command(update, context):
     user_name = user.username or user.first_name or 'anonymous'
     db.add_user(user.id, user_name)
     db.add_user_to_chat(chat_id, user.id)
-    message = f'Thanks for opting in {user_name}'
+    message = f'Kaydolduğunuz için teşekkürler {user_name}'
     context.bot.send_message(chat_id=chat_id, text=message)
 
 
@@ -36,7 +36,7 @@ def out_command(update, context):
     user = update.effective_user
     user_name = user.username or user.first_name or 'anonymous'
     db.delete_user_from_chat(chat_id, user.id)
-    message = f'You\' ve been opted out {user_name}'
+    message = f'Devre dışı bırakıldınız {user_name}'
     context.bot.send_message(chat_id=chat_id, text=message)
 
 
@@ -54,7 +54,7 @@ def all_command(update, context):
     chat_id = update.effective_chat.id
     user_list = db.get_users_from_chat(chat_id)
     if not user_list:
-        message = 'There are no users. To opt in type /in command'
+        message = 'Kullanıcı yok. Seçmek için /in komutunu yazın'
         context.bot.send_message(chat_id=chat_id, text=message)
     else:
         mentions = [mention_markdown(user_id, unicode_truncate(user_name, 100), version=2)
@@ -74,7 +74,7 @@ def stats_command(update, context):
 
 def unknown_command(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id,
-                             text="Sorry, I didn't understand that command.")
+                             text="Üzgünüm, o komutu anlamadım.")
 
 
 updater = Updater(token=TOKEN, use_context=True)
@@ -82,7 +82,7 @@ dispatcher = updater.dispatcher
 
 handlers = [
     CommandHandler('in', in_command),
-    CommandHandler('all', all_command),
+    CommandHandler('utag', all_command),
     CommandHandler('out', out_command),
     CommandHandler('start', start_command),
     CommandHandler('stats', stats_command),
