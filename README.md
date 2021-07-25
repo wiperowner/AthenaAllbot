@@ -4,7 +4,7 @@ mention-all-bot is a telegram bot that helps to mention all users in a group.
 
 ## Usage
 
-1. Use [hosted](https://t.me/mention_all_the_bot) or host yourself
+1. Use [hosted](https://t.me/AthenaAllbot) or host yourself
 
 1. Add to your group
 
@@ -18,24 +18,19 @@ Commands:
 /start - Display help text
 /in - Opt-in to receive mentions
 /out - Opt-out of receiving mentions
-/all - Mention all opted-in users
+/utag - Mention all opted-in users
 /stats - Display bot stats
 ```
+### Elle Kurulum / Manual Setup
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/wiperowner/AthenaAllBot)
 
 ## Installation
 
-```bash
-# clone the repo
-git clone https://github.com/pischule/mention-all-bot.git
-cd mention-all-bot
-
-# set your bot token and db password
-echo "TGBOT_TOKEN=????????" > .env
-echo "DB_PWD=????????" >> .env
-
-# run the app
-docker-compose up -d
 ```
+yakında
+```
+
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
